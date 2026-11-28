@@ -1,19 +1,16 @@
-# Diário de desenvolvimento - GeoPoint
+## Diário de desenvolvimento
 
-Aluno(a): KÉLEN CAMARGO DOS SANTOS
+**Aluno(a): KÉLEN CAMARGO DOS SANTOS**
 
-| Etapa | O que fiz e entendi | Teste realizado / resultado observado | Dificuldade e solução |
-| --- | --- | --- | --- | --- |
-| 1. Ambiente e projeto | Node: v24.1.0. npm: 11.19.0. | Executei npm.cmd run dev e a tela inicial do Vite abriu no navegador; Projeto criado; Instalação das dependências em andamento. | Ao executar npm install, o PowerShell bloqueou o arquivo npm.ps1 porque a execução de scripts estava desabilitada. Resolvi o bloqueio executando npm.cmd install e consegui instalar as dependências.
-| 2. Referência do Figma | Analisei o print do protótipo e defini a especificação visual do frontend. | Registrei os valores finais em docs/REFERENCIA_VISUAL.md. |
+| Etapa | O que fiz | Teste realizado / resultado observado | Dificuldade e solução |
+| --- | --- | --- | --- |
+| 1. Ambiente e projeto | Node: v24.21.0. npm: 11.19.0. | Criei o projeto, instalei as dependências e executei npm.cmd run dev. | Ao executar npm install, o PowerShell bloqueou o arquivo npm.ps1 porque a execução de scripts estava desabilitada. Resolvi o bloqueio executando npm.cmd install e consegui instalar as dependências. |
+| 2. Referência do Figma | Acessei as especificações do protótipo CHIAVE, desenvolvido ao longo do semestre na disciplina de User Experience. | Registrei os valores finais em docs/REFERENCIA_VISUAL.md. | Em um primeiro momento a tipografia usada foi Arial. |
 | 3. API oficial e serviço | Configurei a conexão da API com o PostgreSQL. | A conexão funcionou, mantendo a API na porta 8080. | Ajustei a senha do usuário postgres utilizada na execução da API. |
 | 4. Rotas e menu | Configurei BrowserRouter no main.jsx, Routes e Route no App.jsx e links na Navbar para navegar entre as telas. | Abri /pontos/novo e a aplicação exibiu a tela inicial Cadastro e edição de ponto, com menu e rodapé. | Utilizei páginas iniciais para verificar a navegação antes de desenvolver os formulários completos. |
-| Etapa | Data e horário | O que fiz e entendi | Teste realizado / resultado observado | Dificuldade e solução |
-|---|---|---|---|---|
 | 5. Componentes e estilos | Criei componentes reutilizáveis e apliquei os estilos em index.css. No componente FiltroPontos, identifiquei que CampoTexto recebe o texto “Filtrar pontos” pela prop rotulo e uma função pela prop onChange. Essa função comunica o texto digitado por meio de onFiltrar. | Acessei /pontos e /pontos/novo pelos links do menu. O menu, o título e o rodapé permaneceram visíveis nas duas telas. | — |
-
-
-## Minhas decisões
-
-
-## Explicações que consigo dar
+| 6. Listagem, filtro e estados | Integrei a página ListaPontos ao serviço da API. Utilizei useState para guardar os dados e useEffect para iniciar o carregamento. Implementei filtro local com filter(), avisos de carregamento, erro e lista vazia, além da exclusão com confirmação e atualização do estado. | A listagem exibiu os pontos recebidos da API. O filtro apresentou os registros correspondentes ao texto digitado, sem diferenciar maiúsculas de minúsculas. Ao pesquisar um texto sem correspondência, apareceu “Nenhum ponto encontrado”. Com a API desligada, foi exibida uma mensagem de falha de conexão. Ao confirmar a exclusão de um ponto de teste, ele foi removido e a lista foi atualizada sem recarregar a página. | — |
+| 7. Formulário de cadastro e edição | Implementei o componente FormPonto, reutilizado para cadastro e edição. Os campos são controlados com value e onChange. Validei nome e coordenadas, converti latitude e longitude com Number() e utilizei o ID da rota para escolher entre POST e PUT. O botão fica desabilitado durante o envio e a aplicação retorna à lista após salvar. | Cadastrei um ponto pela interface e a aplicação retornou à listagem com o novo registro. Ao abrir a edição, os campos apareceram preenchidos. Alterei os dados, salvei e conferi a atualização na lista. Após atualizar a página, a alteração permaneceu. O formulário bloqueou o envio com nome vazio, coordenadas vazias e valores fora dos limites permitidos. O cadastro com latitude 0 e longitude 0 foi aceito. | — |
+| 8. Detalhe do ponto | Implementei a tela de detalhe utilizando useParams para obter o UUID da rota e buscarPonto para consultar a API. O useEffect depende do id para carregar o registro correspondente. A tela apresenta identificador, nome, descrição, latitude e longitude, além das ações de editar, excluir e voltar. | Abri o detalhe pelo nome do ponto e pelo botão Ver. Conferi os cinco campos. Ao acessar um UUID inexistente, apareceu a mensagem de ponto não encontrado e o link para retornar à lista permaneceu disponível. | — |
+| 9. Fluxo completo e confirmação de exclusão | Executei o fluxo de cadastrar, listar, filtrar, abrir o detalhe, editar e excluir um ponto pela API oficial. Também conferi a confirmação antes da exclusão. | O ponto cadastrado apareceu na lista, foi localizado pelo filtro e apresentou seus dados no detalhe. A edição atualizou o registro. Ao cancelar a exclusão, o ponto permaneceu na lista. Ao confirmar, ele foi removido sem precisar recarregar a página. | — |
+| 10. Revisão visual, tipografia e build | Revisei a referência visual e preparei a substituição de Arial por Inter no CSS global. Atualizei as orientações de tipografia na documentação e preparei o comando para registrar o novo build em docs/evidencias/build-inter.txt. | O build anterior gerou os arquivos de produção em 4,76 segundos, com aviso PLUGIN_TIMINGS. Confirmei a fonte Inter na seção Fontes renderizadas do Chrome. Revisei as telas nas dimensões 1366 × 768 e 390 × 844, com textos legíveis, campos e botões acessíveis e sem rolagem horizontal. O novo build terminou com código de saída 0. Salvei os prints e o registro da compilação em docs/evidencias. | O PowerShell 5.1 apresentou o aviso de desempenho como NativeCommandError durante a captura da primeira saída. Foi preparado um comando alternativo com cmd.exe e registro do código de saída para verificar o resultado do processo. |

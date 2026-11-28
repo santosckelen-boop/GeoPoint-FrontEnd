@@ -1,6 +1,7 @@
-/* Cores extraídas do print do protótipo enviado. Fonte aproximada: Arial. */
+/* Fonte Inter e cores extraídas conforme a referência visual do Figma. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
 :root {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #f5f2e8;
   background: #18372e;
   font-synthesis: none;
