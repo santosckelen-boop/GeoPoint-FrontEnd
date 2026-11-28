@@ -1,8 +1,11 @@
 # GeoPoint - CRUD de pontos geográficos
 
 Aluno(a): KÉLEN CAMARGO DOS SANTOS
+
 RA: 1102339
+
 Curso: Ciência da Computação
+
 Disciplina: Frontend
 
 Frontend para cadastrar, listar, filtrar, consultar, editar e excluir pontos geográficos na GeoPoint API.
